@@ -1,0 +1,64 @@
+/**
+ * <p> Title: calculator. </p>
+ 
+ * <p> Copyright: Nikhil Â© 2018 </p>
+ 
+ * @author Nikhil
+ * @version 4.00	2018-03-06 calculator is made to add and subtract error terms 
+ */
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+public class classactivity {
+	public static void main(String[] args)
+	
+	 
+	{
+		double x,y,z,k,l,m,e,f,s,a,b,j,v,d;
+		
+		 Scanner nikhil = new Scanner(System.in);
+		 DecimalFormat change = new DecimalFormat();
+		// multiplication 
+		 System.out.println("Enter First Number: "); // here you can enter any value
+		    x = nikhil.nextDouble();               // double helps to compute both integer and decimal values
+		    
+		    System.out.println("Enter Second Number: "); // here you can enter any value
+		    y = nikhil.nextDouble();                       // double helps to compute both integer and decimal values
+
+		   System.out.println("Enter 1st error value: "); // here you can enter any value
+		   k = nikhil.nextDouble();            // double helps to compute both integer and decimal values
+		   System.out.println("Enter 2nd error value: "); // here you can enter any value
+		   l = nikhil.nextDouble();                 // double helps to compute both integer and decimal values
+		   z = x * y ;// here it do product of both measured values
+		   e= k/x;// here it divides error value with measured value
+		   f= l/y;// here it divides error value with measured value
+		   m= k+l;// here it adds both the error terms
+		   s= (e+f)*z; // here it add and then multipy the error fractions and product 
+		   
+		  System.out.println("product of these numbers: "+z+"±"+ s);  // here it shows the   result of those upper values
+		  System.out.println("product of these numbers after significance: "+ getSignificant(z,5)+" ± " + getSignificant( s,1));// here it shows the result after significance
+		  
+	       // division
+		 
+		   a = x / y ;// here it do divide of both measured values
+		   j= k/x;// here it divides error value with measured value
+		   v= l/y;// here it divides error value with measured value
+		   b= k+l;// here it adds both the error terms
+		   d= (e+f)*z;// here it add and then multipy the error fractions and product 
+		   
+		  System.out.println("division of these numbers: "+a+"±"+ d);  // here it shows the   result of those upper values
+		  System.out.println("division of these numbers after significance: " +getSignificant(a,5)+" ± " + getSignificant( d,1));// here it shows the result after significance
+		  
+		  
+	       nikhil.close();
+	
+	}
+// significance method
+	private static String getSignificant(double value, int sigFigs) {
+		 MathContext mc = new MathContext(sigFigs, RoundingMode.DOWN);
+         BigDecimal bigDecimal = new BigDecimal(value, mc);
+         return bigDecimal.toPlainString();
+	}	
+	}
